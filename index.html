@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vulgatiam — Main Page Template</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #1b2024;
+  --paper-raised: #232a2f;
+  --paper-line: #3d474d;
+  --ink: #d7dde1;
+  --ink-soft: #9aa7ad;
+  --ink-faint: #6b7679;
+  --link: #7fa8c9;
+  --link-visited: #6f8ea6;
+
+  --tab-chapter: #d4af37;
+  --tab-chapter-bg: #3a2f18;
+  --tab-character: #cf6b6b;
+  --tab-character-bg: #3a1f1f;
+  --tab-planet: #7fae8a;
+  --tab-planet-bg: #1f2e22;
+  --tab-system: #8ba7d4;
+  --tab-system-bg: #1e2733;
+
+  --accent: var(--link);
+  --accent-bg: var(--paper-raised);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #0e1113;
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+a { color: var(--link); }
+a:visited { color: var(--link-visited); }
+
+.wiki-shell {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  min-height: 100vh;
+}
+
+@media (max-width: 760px) {
+  .wiki-shell { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
+
+.sidebar {
+  background: var(--paper-raised);
+  border-right: 1px solid var(--paper-line);
+  padding: 18px 14px;
+}
+
+.sidebar-mark {
+  font-family: 'Special Elite', monospace;
+  font-size: 17px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.sidebar-tagline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.sidebar-group { margin-bottom: 18px; }
+
+.sidebar-heading {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+
+.sidebar-group ul { list-style: none; margin: 0; padding: 0; }
+.sidebar-group li { margin-bottom: 4px; }
+.sidebar-group a { font-size: 13px; text-decoration: none; color: var(--link); }
+.sidebar-group a:hover { text-decoration: underline; }
+
+.sidebar-search {
+  width: 100%;
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px;
+  padding: 4px 6px;
+  border: 1px solid var(--paper-line);
+  background: var(--paper);
+  color: var(--ink-faint);
+}
+
+.main-col {
+  background: var(--paper);
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(255,255,255,0.025) 28px);
+  padding: 28px 28px 60px;
+}
+
+.solo-article { max-width: 760px; }
+
+.page-title-block {
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 10px;
+  margin-bottom: 22px;
+}
+
+.entry-title {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 36px;
+  margin: 0 0 6px;
+  color: var(--ink);
+}
+
+.entry-subtitle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+.article h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 21px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 4px;
+  margin: 30px 0 12px;
+}
+.article h2:first-child { margin-top: 0; }
+
+.section-edit {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--ink-faint);
+  text-decoration: none;
+}
+.section-edit:hover { text-decoration: underline; }
+
+.article p { margin: 0 0 14px; }
+.article .placeholder { color: var(--ink-faint); font-style: italic; }
+
+.article blockquote {
+  margin: 18px 0;
+  padding: 8px 16px;
+  border-left: 3px solid var(--accent);
+  background: var(--paper-raised);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* Collection index cards — one per category folder */
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin: 12px 0 18px;
+}
+
+.collection-card {
+  display: block;
+  border: 1px solid var(--paper-line);
+  background: var(--paper-raised);
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.collection-card .cc-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.collection-card .cc-desc {
+  font-family: 'Crimson Pro', serif;
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.cc-characters .cc-label { color: var(--tab-character); }
+.cc-chapters .cc-label,
+.cc-warband .cc-label { color: var(--tab-chapter); }
+.cc-planets .cc-label { color: var(--tab-planet); }
+.cc-systems .cc-label { color: var(--tab-system); }
+
+/* Featured project entries */
+.project-entry {
+  border-left: 3px solid var(--paper-line);
+  padding: 4px 0 4px 14px;
+  margin-bottom: 16px;
+}
+.project-entry .pe-title {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 17px;
+}
+.project-entry .pe-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  margin-bottom: 4px;
+}
+</style>
+</head>
+<body>
+<div class="wiki-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-mark">Vulgatiam</div>
+    <div class="sidebar-tagline">a record of sanctioned homebrew</div>
+
+    <input class="sidebar-search" type="text" placeholder="Search the wiki" disabled>
+
+    <div class="sidebar-group" style="margin-top:16px;">
+      <div class="sidebar-heading">Navigation</div>
+      <ul>
+        <li><a href="https://vulgatiam.com/">Main Page</a></li>
+        <li><a href="https://vulgatiam.com/charter">Charter</a></li>
+        <li><a href="https://vulgatiam.com/contributors">Contributors</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="main-col">
+
+    <header class="page-title-block">
+      <h1 class="entry-title">Vulgatiam</h1>
+      <p class="entry-subtitle">a record of sanctioned homebrew · [TAGLINE OR MOTTO]</p>
+    </header>
+
+    <div class="solo-article">
+      <article class="article">
+
+        <h2>What This Is <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[One to two paragraphs on the project's purpose: an index of homebrew held to a shared standard of canon-consistency and craft, maintained by you and your friends. Explain what "sanctioned" means here without using that word — see the Charter for the actual standard.]</p>
+
+        <blockquote>[Optional: an epigraph, motto, or short framing quotation for the collection as a whole.]</blockquote>
+
+        <h2>Featured Projects <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Brief intro line, then one project-entry block per member project.]</p>
+
+        <div class="project-entry">
+          <div class="pe-title placeholder">[Project Name, e.g. Caelimures]</div>
+          <div class="pe-meta placeholder">by [Author] · [one-line genre/scope tag]</div>
+          <p class="placeholder">[One or two sentence description of the project.] <a href="https://vulgatiam.com/charter#[Project_Name]">Full entry on the Charter →</a></p>
+        </div>
+
+        <div class="project-entry">
+          <div class="pe-title placeholder">[Second Project Name]</div>
+          <div class="pe-meta placeholder">by [Author] · [one-line genre/scope tag]</div>
+          <p class="placeholder">[Description.] <a href="https://vulgatiam.com/charter#[Project_Name]">Full entry on the Charter →</a></p>
+        </div>
+
+        <h2>Browse the Record <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Short line inviting the reader to browse by subject type.]</p>
+
+        <div class="collection-grid">
+          <a class="collection-card cc-characters" href="https://vulgatiam.com/characters/">
+            <div class="cc-label">Characters</div>
+            <div class="cc-desc">Notable figures across every project</div>
+          </a>
+          <a class="collection-card cc-chapters" href="https://vulgatiam.com/chapters/">
+            <div class="cc-label">Chapters</div>
+            <div class="cc-desc">Loyalist Space Marine chapters</div>
+          </a>
+          <a class="collection-card cc-warband" href="https://vulgatiam.com/warband/">
+            <div class="cc-label">Warbands</div>
+            <div class="cc-desc">Chapters fallen to Chaos</div>
+          </a>
+          <a class="collection-card cc-planets" href="https://vulgatiam.com/planets/">
+            <div class="cc-label">Planets</div>
+            <div class="cc-desc">Worlds of note</div>
+          </a>
+          <a class="collection-card cc-systems" href="https://vulgatiam.com/systems/">
+            <div class="cc-label">Systems</div>
+            <div class="cc-desc">Star systems of note</div>
+          </a>
+        </div>
+
+        <h2>Elsewhere <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="see-also placeholder">[Links to the Charter (for standards/process) and Contributors (for credits).]</p>
+
+      </article>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

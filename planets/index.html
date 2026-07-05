@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Planets — Vulgatiam</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #1b2024;
+  --paper-raised: #232a2f;
+  --paper-line: #3d474d;
+  --ink: #d7dde1;
+  --ink-soft: #9aa7ad;
+  --ink-faint: #6b7679;
+  --link: #7fa8c9;
+  --link-visited: #6f8ea6;
+
+  --tab-chapter: #d4af37;
+  --tab-chapter-bg: #3a2f18;
+
+  --accent: var(--tab-chapter);
+  --accent-bg: var(--tab-chapter-bg);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #0e1113;
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+a { color: var(--link); }
+a:visited { color: var(--link-visited); }
+
+.wiki-shell {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  min-height: 100vh;
+}
+
+@media (max-width: 760px) {
+  .wiki-shell { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
+
+.sidebar {
+  background: var(--paper-raised);
+  border-right: 1px solid var(--paper-line);
+  padding: 18px 14px;
+}
+
+.sidebar-mark {
+  font-family: 'Special Elite', monospace;
+  font-size: 17px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.sidebar-tagline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.sidebar-group { margin-bottom: 18px; }
+
+.sidebar-heading {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+
+.sidebar-group ul { list-style: none; margin: 0; padding: 0; }
+.sidebar-group li { margin-bottom: 4px; }
+.sidebar-group a { font-size: 13px; text-decoration: none; color: var(--link); }
+.sidebar-group a:hover { text-decoration: underline; }
+
+.sidebar-search {
+  width: 100%;
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px;
+  padding: 4px 6px;
+  border: 1px solid var(--paper-line);
+  background: var(--paper);
+  color: var(--ink-faint);
+}
+
+.main-col {
+  background: var(--paper);
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(255,255,255,0.025) 28px);
+  padding: 28px 28px 60px;
+}
+
+.solo-article { max-width: 760px; }
+
+.page-title-block {
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 10px;
+  margin-bottom: 22px;
+}
+
+.entry-title {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 36px;
+  margin: 0 0 6px;
+  color: var(--ink);
+}
+
+.entry-subtitle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+.article p { margin: 0 0 14px; }
+.article .placeholder { color: var(--ink-faint); font-style: italic; }
+
+.index-list {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 0;
+}
+.index-list li {
+  border-bottom: 1px solid var(--paper-line);
+  padding: 10px 2px;
+}
+.index-list a {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+.index-list .il-desc {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<div class="wiki-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-mark">Vulgatiam</div>
+    <div class="sidebar-tagline">a record of sanctioned homebrew</div>
+
+    <input class="sidebar-search" type="text" placeholder="Search the wiki" disabled>
+
+    <div class="sidebar-group" style="margin-top:16px;">
+      <div class="sidebar-heading">Navigation</div>
+      <ul>
+        <li><a href="https://vulgatiam.com/">Main Page</a></li>
+        <li><a href="https://vulgatiam.com/charter">Charter</a></li>
+        <li><a href="https://vulgatiam.com/contributors">Contributors</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="main-col">
+
+    <header class="page-title-block">
+      <h1 class="entry-title">Planets</h1>
+      <p class="entry-subtitle">index of all planets entries</p>
+    </header>
+
+    <div class="solo-article">
+      <article class="article">
+
+        <p class="placeholder">[No entries yet. Once planets pages are added to this folder, list them here — one <code>&lt;li&gt;</code> per entry, following the pattern below.]</p>
+
+        <ul class="index-list placeholder">
+          <li>
+            <a href="https://vulgatiam.com/planets/[entry-slug]">[Entry Name]</a>
+            <span class="il-desc">[One-line descriptor — e.g. source project, faction, or status]</span>
+          </li>
+          <li>
+            <a href="https://vulgatiam.com/planets/[entry-slug]">[Entry Name]</a>
+            <span class="il-desc">[One-line descriptor]</span>
+          </li>
+        </ul>
+
+        <a class="back-link" href="https://vulgatiam.com/">&larr; Back to Main Page</a>
+
+      </article>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

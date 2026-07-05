@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>[Character Name] — Subject Page Template</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #1b2024;
+  --paper-raised: #232a2f;
+  --paper-line: #3d474d;
+  --ink: #d7dde1;
+  --ink-soft: #9aa7ad;
+  --ink-faint: #6b7679;
+  --link: #7fa8c9;
+  --link-visited: #6f8ea6;
+
+  --tab-chapter: #d4af37;
+  --tab-chapter-bg: #3a2f18;
+  --tab-character: #cf6b6b;
+  --tab-character-bg: #3a1f1f;
+  --tab-planet: #7fae8a;
+  --tab-planet-bg: #1f2e22;
+  --tab-system: #8ba7d4;
+  --tab-system-bg: #1e2733;
+
+  --accent: var(--tab-chapter);
+  --accent-bg: var(--tab-chapter-bg);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #0e1113;
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+a { color: var(--link); }
+a:visited { color: var(--link-visited); }
+
+.wiki-shell {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  min-height: 100vh;
+}
+
+@media (max-width: 760px) {
+  .wiki-shell { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
+
+.sidebar {
+  background: var(--paper-raised);
+  border-right: 1px solid var(--paper-line);
+  padding: 18px 14px;
+}
+
+.sidebar-mark {
+  font-family: 'Special Elite', monospace;
+  font-size: 17px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.sidebar-tagline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.sidebar-group { margin-bottom: 18px; }
+
+.sidebar-heading {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+
+.sidebar-group ul { list-style: none; margin: 0; padding: 0; }
+.sidebar-group li { margin-bottom: 4px; }
+.sidebar-group a { font-size: 13px; text-decoration: none; color: var(--link); }
+.sidebar-group a:hover { text-decoration: underline; }
+
+.sidebar-search {
+  width: 100%;
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px;
+  padding: 4px 6px;
+  border: 1px solid var(--paper-line);
+  background: var(--paper);
+  color: var(--ink-faint);
+}
+
+.main-col {
+  background: var(--paper);
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(255,255,255,0.025) 28px);
+  padding: 0 28px 60px;
+}
+
+
+.page-title-block {
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+.category-tab {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 2px 8px;
+  margin-bottom: 8px;
+  border: 1px solid var(--accent);
+}
+
+.entry-title {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 32px;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+
+.entry-subtitle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.entry-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .entry-layout { grid-template-columns: 1fr; }
+}
+
+.article h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 21px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 4px;
+  margin: 30px 0 12px;
+}
+.article h2:first-child { margin-top: 0; }
+
+.section-edit {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--ink-faint);
+  text-decoration: none;
+}
+.section-edit:hover { text-decoration: underline; }
+
+.article p { margin: 0 0 14px; }
+.article .placeholder { color: var(--ink-faint); font-style: italic; }
+
+.article sup.cite {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--link);
+}
+.article sup.cite a { text-decoration: none; }
+
+.article blockquote {
+  margin: 18px 0;
+  padding: 8px 16px;
+  border-left: 3px solid var(--accent);
+  background: var(--paper-raised);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.references {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  padding-left: 18px;
+}
+.references li { margin-bottom: 4px; }
+
+.see-also { font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
+
+.infobox {
+  border: 1px solid var(--accent);
+  background: var(--paper-raised);
+  font-size: 13.5px;
+}
+
+.infobox-title {
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid var(--accent);
+}
+
+.infobox-image {
+  aspect-ratio: 4 / 3;
+  background: repeating-linear-gradient(45deg, var(--paper-line), var(--paper-line) 2px, transparent 2px, transparent 10px);
+  border-bottom: 1px solid var(--paper-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 10px;
+}
+
+.infobox table { width: 100%; border-collapse: collapse; }
+
+.infobox th, .infobox td {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px 8px;
+  border-top: 1px solid var(--paper-line);
+  font-weight: 400;
+}
+
+.infobox th {
+  width: 38%;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.infobox tr:nth-child(even) td,
+.infobox tr:nth-child(even) th {
+  background: rgba(255,255,255,0.025);
+}
+
+.categories-bar {
+  margin-top: 40px;
+  padding: 10px 14px;
+  background: var(--paper-raised);
+  border: 1px solid var(--paper-line);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+.categories-bar a { margin-right: 4px; }
+
+.retrieved-from {
+  margin-top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  color: var(--ink-faint);
+}
+</style>
+</head>
+<body>
+<div class="wiki-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-mark">Vulgatiam</div>
+    <div class="sidebar-tagline">a record of sanctioned homebrew</div>
+
+    <input class="sidebar-search" type="text" placeholder="Search the wiki" disabled>
+
+    <div class="sidebar-group" style="margin-top:16px;">
+      <div class="sidebar-heading">Navigation</div>
+      <ul>
+        <li><a href="https://vulgatiam.com/">Main Page</a></li>
+        <li><a href="https://vulgatiam.com/charter">Charter</a></li>
+        <li><a href="https://vulgatiam.com/contributors">Contributors</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="main-col">
+
+
+    <header class="page-title-block">
+      <span class="category-tab">Character</span>
+      <h1 class="entry-title">[Character Full Name]</h1>
+      <p class="entry-subtitle">from <a href="https://vulgatiam.com/charter#[Source_Project]">[Source Project]</a> · Stable ID: [XXXX]</p>
+    </header>
+
+    <div class="entry-layout">
+
+      <article class="article">
+
+        <p><strong>[Character Name]</strong> is a <span class="placeholder">[rank/role]</span> of the <span class="placeholder"><a href="https://vulgatiam.com/[chapters or warband]/[Chapter/Warband]">[Chapter/Warband]</a></span>.<sup class="cite"><a href="#ref1">[1]</a></sup> <span class="placeholder">[One sentence naming their single most defining trait or act.]</span></p>
+
+        <h2>Biography <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Origin — homeworld, recruitment, notable early service. Encyclopedic third person, not in-character voice.]</p>
+
+        <h2>Notable Deeds <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Major campaigns, decisions, or turning points directly tied to this character.]<sup class="cite"><a href="#ref2">[2]</a></sup></p>
+
+        <h2>Personality &amp; Characterization <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Defining psychological traits, kept brief — reference summary, not a character study.]</p>
+
+        <h2>Status <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Current status — active, killed in action, fallen to Chaos, interred, etc.]</p>
+
+        <blockquote>[Optional short attributed quotation.]</blockquote>
+
+        <h2>See Also <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="see-also placeholder">[Related Subject Pages: chapter/warband, homeworld, connected characters.]</p>
+
+        <h2>References <a class="section-edit" href="#">[edit]</a></h2>
+        <ol class="references">
+          <li id="ref1">[Source citation.]</li>
+          <li id="ref2">[Source citation.]</li>
+        </ol>
+
+      </article>
+
+      <aside class="infobox">
+        <div class="infobox-title">[Character Name]</div>
+        <div class="infobox-image">[Character Portrait / Iconography]</div>
+        <table>
+          <tr><th>Affiliation</th><td class="placeholder"><a href="https://vulgatiam.com/[chapters or warband]/[Chapter/Warband]">[Chapter/Warband]</a></td></tr>
+          <tr><th>Rank</th><td class="placeholder">[Current or final rank]</td></tr>
+          <tr><th>Homeworld</th><td class="placeholder"><a href="https://vulgatiam.com/planets/[Planet]">[Planet]</a></td></tr>
+          <tr><th>Specialty</th><td class="placeholder">[Combat role / psychic discipline]</td></tr>
+          <tr><th>Status</th><td class="placeholder">[Active / Deceased / Fallen / Interred]</td></tr>
+          <tr><th>Source Project</th><td class="placeholder"><a href="https://vulgatiam.com/charter#[Project_name]">[Project name]</a></td></tr>
+        </table>
+      </aside>
+
+    </div>
+
+    <div class="categories-bar">
+      Categories: <a href="https://vulgatiam.com/characters/">[Characters]</a> <a href="https://vulgatiam.com/[chapters or warband]/[Chapter_Warband_Name]">[Chapter/Warband Name]</a> <a href="https://vulgatiam.com/charter#[Source_Project]">[Source Project]</a>
+    </div>
+    <div class="retrieved-from">Retrieved from "vulgatiam.com/characters/[Character_Name]" · Last verified: [DATE]</div>
+
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Omenwing — Subject Page</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #1b2024;
+  --paper-raised: #232a2f;
+  --paper-line: #3d474d;
+  --ink: #d7dde1;
+  --ink-soft: #9aa7ad;
+  --ink-faint: #6b7679;
+  --link: #7fa8c9;
+  --link-visited: #6f8ea6;
+
+  --tab-chapter: #d4af37;
+  --tab-chapter-bg: #3a2f18;
+  --tab-character: #cf6b6b;
+  --tab-character-bg: #3a1f1f;
+  --tab-planet: #7fae8a;
+  --tab-planet-bg: #1f2e22;
+  --tab-system: #8ba7d4;
+  --tab-system-bg: #1e2733;
+
+  --accent: var(--tab-chapter);
+  --accent-bg: var(--tab-chapter-bg);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #0e1113;
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+a { color: var(--link); }
+a:visited { color: var(--link-visited); }
+
+.wiki-shell {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  min-height: 100vh;
+}
+
+@media (max-width: 760px) {
+  .wiki-shell { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
+
+.sidebar {
+  background: var(--paper-raised);
+  border-right: 1px solid var(--paper-line);
+  padding: 18px 14px;
+}
+
+.sidebar-mark {
+  font-family: 'Special Elite', monospace;
+  font-size: 17px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.sidebar-tagline {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.05em;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.sidebar-group { margin-bottom: 18px; }
+
+.sidebar-heading {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+
+.sidebar-group ul { list-style: none; margin: 0; padding: 0; }
+.sidebar-group li { margin-bottom: 4px; }
+.sidebar-group a { font-size: 13px; text-decoration: none; color: var(--link); }
+.sidebar-group a:hover { text-decoration: underline; }
+
+.sidebar-search {
+  width: 100%;
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px;
+  padding: 4px 6px;
+  border: 1px solid var(--paper-line);
+  background: var(--paper);
+  color: var(--ink-faint);
+}
+
+.main-col {
+  background: var(--paper);
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(255,255,255,0.025) 28px);
+  padding: 0 28px 60px;
+}
+
+
+.page-title-block {
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+.category-tab {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 2px 8px;
+  margin-bottom: 8px;
+  border: 1px solid var(--accent);
+}
+
+.entry-title {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 32px;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+
+.entry-subtitle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.entry-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .entry-layout { grid-template-columns: 1fr; }
+}
+
+.article h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 21px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--paper-line);
+  padding-bottom: 4px;
+  margin: 30px 0 12px;
+}
+.article h2:first-child { margin-top: 0; }
+
+.article h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 17.5px;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--paper-line);
+  padding-left: 10px;
+  margin: 20px 0 10px;
+}
+
+.article ul, .article ol.plain { margin: 0 0 14px; padding-left: 22px; }
+.article li { margin-bottom: 3px; }
+
+.article table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  margin: 6px 0 16px;
+}
+.article table.data-table th, .article table.data-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 6px 10px;
+  border-top: 1px solid var(--paper-line);
+}
+.article table.data-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+
+/* Org-chart tables: Chapter Command / Companies grid */
+.org-wrap {
+  overflow-x: auto;
+  margin: 16px 0 24px;
+  border: 1px solid var(--paper-line);
+}
+.org-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 680px;
+  font-size: 12.5px;
+}
+.org-table th, .org-table td {
+  border: 1px solid var(--paper-line);
+  padding: 8px;
+  vertical-align: top;
+  text-align: left;
+}
+.org-title-row th {
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px;
+}
+.org-lead-row td { text-align: center; }
+.org-lead-badge {
+  width: 70px;
+  height: 90px;
+  margin: 0 auto 8px;
+  background: repeating-linear-gradient(45deg, var(--paper-line), var(--paper-line) 2px, transparent 2px, transparent 10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 4px;
+}
+.org-lead-name { font-family: 'Crimson Pro', serif; font-weight: 600; font-size: 16px; color: var(--ink); }
+.org-lead-title { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+.org-header-row th {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--paper-raised);
+  text-align: center;
+}
+.org-subtitle {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+.org-icon-cell { text-align: center; padding: 10px; }
+.org-icon {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--paper-raised);
+  border: 1px solid var(--paper-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  color: var(--ink-faint);
+}
+.org-table ul { list-style: none; margin: 4px 0 0; padding: 0; }
+.org-table li { position: relative; padding-left: 10px; margin-bottom: 2px; }
+.org-table li::before { content: "▪"; position: absolute; left: 0; color: var(--ink-faint); font-size: 8px; top: 2px; }
+
+.section-edit {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: var(--ink-faint);
+  text-decoration: none;
+}
+.section-edit:hover { text-decoration: underline; }
+
+.article p { margin: 0 0 14px; }
+.article .placeholder { color: var(--ink-faint); font-style: italic; }
+
+.article sup.cite {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--link);
+}
+.article sup.cite a { text-decoration: none; }
+
+.article blockquote {
+  margin: 18px 0;
+  padding: 8px 16px;
+  border-left: 3px solid var(--accent);
+  background: var(--paper-raised);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.references {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+  padding-left: 18px;
+}
+.references li { margin-bottom: 4px; }
+
+.see-also { font-family: 'IBM Plex Mono', monospace; font-size: 13px; }
+
+.infobox {
+  border: 1px solid var(--accent);
+  background: var(--paper-raised);
+  font-size: 13.5px;
+}
+
+.infobox-title {
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid var(--accent);
+}
+
+.infobox-image {
+  aspect-ratio: 4 / 3;
+  background: repeating-linear-gradient(45deg, var(--paper-line), var(--paper-line) 2px, transparent 2px, transparent 10px);
+  border-bottom: 1px solid var(--paper-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 10px;
+}
+
+.infobox table { width: 100%; border-collapse: collapse; }
+
+.infobox th, .infobox td {
+  text-align: left;
+  vertical-align: top;
+  padding: 5px 8px;
+  border-top: 1px solid var(--paper-line);
+  font-weight: 400;
+}
+
+.infobox th {
+  width: 38%;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.infobox tr:nth-child(even) td,
+.infobox tr:nth-child(even) th {
+  background: rgba(255,255,255,0.025);
+}
+
+.categories-bar {
+  margin-top: 40px;
+  padding: 10px 14px;
+  background: var(--paper-raised);
+  border: 1px solid var(--paper-line);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+.categories-bar a { margin-right: 4px; }
+
+.retrieved-from {
+  margin-top: 10px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  color: var(--ink-faint);
+}
+</style>
+</head>
+<body>
+<div class="wiki-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-mark">Vulgatiam</div>
+    <div class="sidebar-tagline">a record of sanctioned homebrew</div>
+
+    <input class="sidebar-search" type="text" placeholder="Search the wiki" disabled>
+
+    <div class="sidebar-group" style="margin-top:16px;">
+      <div class="sidebar-heading">Navigation</div>
+      <ul>
+        <li><a href="https://vulgatiam.com/">Main Page</a></li>
+        <li><a href="https://vulgatiam.com/charter">Charter</a></li>
+        <li><a href="https://vulgatiam.com/contributors">Contributors</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="main-col">
+
+
+    <header class="page-title-block">
+      <span class="category-tab">Space Marine Chapter</span>
+      <h1 class="entry-title">Omenwings</h1>
+    </header>
+
+    <div class="entry-layout">
+
+      <article class="article">
+
+        <h2>Overview </h2>
+        <p>The <strong>Omenwings</strong> are a Raven Guard successor chapter of the Cursed Founding. The chapter is the result of an attempt to correct the mutations of the Raven Guard's Melanchrome gene-seed organ. This has resulted in dramatic lymphatic imbalances, cauing excessive skin growth around their hands and feet, and the overgrowth of long, talon-like nails.</p>
+
+        <blockquote>[This article is still under construction. Material here is subject to change.]</blockquote>
+
+
+<!--
+
+
+        <h2>History <a class="section-edit" href="#">[edit]</a></h2>
+
+        <h3>[Founding Era / Historical Period] <a class="section-edit" href="#">[edit]</a></h3>
+        <p class="placeholder">[Founding chapter/legion, founding date or era, geneseed lineage, and the wider historical context the Chapter was raised into.]<sup class="cite"><a href="#ref2">[2]</a></sup></p>
+
+        <h3>[Major Campaign / Turning Point] <a class="section-edit" href="#">[edit]</a></h3>
+        <p class="placeholder">[Chronological account of a major campaign or crisis, including a fall to Chaos where relevant. Encyclopedic voice, not in-universe. Add further h3 subsections for additional eras as needed.]</p>
+
+        <h3>Notable Conflicts <a class="section-edit" href="#">[edit]</a></h3>
+        <p class="placeholder">[Framing note — e.g. whether this list covers the Chapter's full history, or excludes conflicts after a Fall in favor of a successor warband's own entry.]
+        <ul>
+          <li>[Date range] - [Conflict name]: <span class="placeholder">[brief note]</span></li>
+        </ul>
+        </p>
+
+        <h2>Culture <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Chapter cult, oaths, internal law, and relationship to the Imperial Creed or Ruinous Powers.]</p>
+
+        <h2>Combat Doctrine and Organization <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Overall doctrinal character, equipment emphasis, and deviations from the Codex Astartes.]</p>
+
+        <p class="placeholder">[Company-specific doctrine notes — nicknames, specializations, unique orders or traditions of induction.]</p>
+
+        <p class="placeholder">[Additional company-specific doctrine notes as needed. Add further paragraphs per company or grouping.]</p>
+
+        <h2>Chapter Disposition <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Framing sentence — e.g. the point in time this disposition reflects.]</p>
+
+        <div class="org-wrap">
+        <table class="org-table">
+          <tr class="org-title-row"><th colspan="6">Chapter Command</th></tr>
+          <tr class="org-lead-row">
+            <td colspan="6">
+              <div class="org-lead-badge">[Chapter Master Badge]</div>
+              <div class="org-lead-name">[Chapter Master Name]</div>
+              <div class="org-lead-title">Chapter Master of [Chapter/Warband Name]</div>
+            </td>
+          </tr>
+          <tr class="org-header-row">
+            <th>[Department]</th>
+            <th>[Department]</th>
+            <th>[Department]</th>
+            <th>[Department]</th>
+            <th>[Department]</th>
+            <th>[Department]</th>
+          </tr>
+          <tr>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+          </tr>
+          <tr>
+            <td class="placeholder">[Name — role]</td>
+            <td class="placeholder">[Name — role]</td>
+            <td class="placeholder">[Name — role]</td>
+            <td class="placeholder">[Name — role]</td>
+            <td class="placeholder">[Name — role]</td>
+            <td class="placeholder">[Name — role]</td>
+          </tr>
+        </table>
+        </div>
+
+        <div class="org-wrap">
+        <table class="org-table">
+          <tr class="org-header-row">
+            <th>1st Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>2nd Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>3rd Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>4th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>5th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>6th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>7th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>8th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>9th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>10th Company<span class="org-subtitle">[nickname / role]</span></th>
+          </tr>
+          <tr>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+          </tr>
+          <tr>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+          </tr>
+        </table>
+        </div>
+
+        <h2>Recruitment <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Recruiting world(s), selection trials, and induction rites.]</p>
+
+        <h2>Heraldry <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Chapter badge / iconography description.]</p>
+
+        <p class="placeholder">[Armor colours, trim, and squad/company markings.]</p>
+
+        <p class="placeholder">[Company-specific heraldic variations, if any.]</p>
+
+        <h2>Notable Elements <a class="section-edit" href="#">[edit]</a></h2>
+
+        <h3>Relics <a class="section-edit" href="#">[edit]</a></h3>
+        <table class="data-table">
+          <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+          <tr><td class="placeholder">[Name]</td><td class="placeholder">[Type]</td><td class="placeholder">[Description]</td></tr>
+        </table>
+
+        <h3>Notable Vessels <a class="section-edit" href="#">[edit]</a></h3>
+        <table class="data-table">
+          <tr><th>Name</th><th>Class</th><th>Notes</th></tr>
+          <tr><td class="placeholder">[Name]</td><td class="placeholder">[Class]</td><td class="placeholder">[Notes]</td></tr>
+        </table>
+
+        <h3>Notable Members <a class="section-edit" href="#">[edit]</a></h3>
+        <ul>
+          <li class="placeholder">[Rank/Title] <a href="https://vulgatiam.com/characters/[Name]">[Name]</a></li>
+        </ul>
+
+        <h2>See Also <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="see-also placeholder">
+          <a href="https://vulgatiam.com/planets/[Planet_name]">[Planet name]</a> (homeworld) ·
+          <a href="https://vulgatiam.com/warband/[Warband_name]">[Warband name]</a> (successor warband, if applicable)
+        </p>
+
+        <h2>References <a class="section-edit" href="#">[edit]</a></h2>
+        <ol class="references">
+          <li id="ref1">[Source citation — story entry, chapter, or paragraph reference.]</li>
+          <li id="ref2">[Source citation.]</li>
+        </ol>
+
+
+-->
+
+
+      </article>
+
+      <aside class="infobox">
+        <div class="infobox-title">Omenwings</div>
+        <div class="infobox-image">[Chapter Badge / Heraldry]</div>
+        <table>
+          <tr><th>Founding Legion</th><td>Raven Guard</td></tr>
+          <tr><th>Founding</th><td>Cursed Founding</td></tr>
+          <tr><th>Homeworld</th><td>Nidskjalf</td></tr>
+          <tr><th>Chapter Master</th><td class="placeholder">[Name]</td></tr>
+          <tr><th>Specialization</th><td class="placeholder">[Doctrine]</td></tr>
+          <tr><th>Colours</th><td class="placeholder">[Heraldic Colors]</td></tr>
+          <tr><th>Status</th><td class="placeholder">[Status]</td></tr>
+        </table>
+      </aside>
+
+
+    </div>
+
+    <div class="categories-bar">
+      Categories: <a href="https://vulgatiam.com/chapters/">Space Marine Chapters</a>
+    </div>
+    <div class="retrieved-from">Retrieved from "vulgatiam.com/chapters/Omenwings" · Last verified: [DATE]</div>
+
+  </div>
+</div>
+</body>
+</html>

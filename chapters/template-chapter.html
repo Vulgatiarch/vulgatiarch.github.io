@@ -171,6 +171,125 @@ a:visited { color: var(--link-visited); }
 }
 .article h2:first-child { margin-top: 0; }
 
+.article h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 17.5px;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--paper-line);
+  padding-left: 10px;
+  margin: 20px 0 10px;
+}
+
+.article ul, .article ol.plain { margin: 0 0 14px; padding-left: 22px; }
+.article li { margin-bottom: 3px; }
+
+.article table.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  margin: 6px 0 16px;
+}
+.article table.data-table th, .article table.data-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 6px 10px;
+  border-top: 1px solid var(--paper-line);
+}
+.article table.data-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+
+/* Org-chart tables: Chapter Command / Companies grid */
+.org-wrap {
+  overflow-x: auto;
+  margin: 16px 0 24px;
+  border: 1px solid var(--paper-line);
+}
+.org-table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 680px;
+  font-size: 12.5px;
+}
+.org-table th, .org-table td {
+  border: 1px solid var(--paper-line);
+  padding: 8px;
+  vertical-align: top;
+  text-align: left;
+}
+.org-title-row th {
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px;
+}
+.org-lead-row td { text-align: center; }
+.org-lead-badge {
+  width: 70px;
+  height: 90px;
+  margin: 0 auto 8px;
+  background: repeating-linear-gradient(45deg, var(--paper-line), var(--paper-line) 2px, transparent 2px, transparent 10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 4px;
+}
+.org-lead-name { font-family: 'Crimson Pro', serif; font-weight: 600; font-size: 16px; color: var(--ink); }
+.org-lead-title { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-soft); margin-top: 2px; }
+.org-header-row th {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--paper-raised);
+  text-align: center;
+}
+.org-subtitle {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+.org-icon-cell { text-align: center; padding: 10px; }
+.org-icon {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--paper-raised);
+  border: 1px solid var(--paper-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  color: var(--ink-faint);
+}
+.org-table ul { list-style: none; margin: 4px 0 0; padding: 0; }
+.org-table li { position: relative; padding-left: 10px; margin-bottom: 2px; }
+.org-table li::before { content: "▪"; position: absolute; left: 0; color: var(--ink-faint); font-size: 8px; top: 2px; }
+
 .section-edit {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10.5px;
@@ -306,36 +425,159 @@ a:visited { color: var(--link-visited); }
 
 
     <header class="page-title-block">
-      <span class="category-tab">Marine Chapter / Warband</span>
+      <span class="category-tab">[Space Marine Chapter / Warband]</span>
       <h1 class="entry-title">[Chapter or Warband Name]</h1>
-      <p class="entry-subtitle">from <a href="https://vulgatiam.com/charter#[Source_Project]">[Source Project, e.g. Caelimures]</a> · Stable ID: [XXXX]</p>
     </header>
 
     <div class="entry-layout">
 
       <article class="article">
 
-        <p><strong>[Chapter/Warband Name]</strong> is a <span class="placeholder">[Founding Legion / successor lineage]</span> that <span class="placeholder">[defining trait — specialization, doctrine, or fate]</span>.<sup class="cite"><a href="#ref1">[1]</a></sup> <span class="placeholder">[Second sentence: current status.]</span></p>
-
-        <h2>Founding &amp; Heraldry <a class="section-edit" href="#">[edit]</a></h2>
-        <p class="placeholder">[Founding chapter/legion, founding date or era, geneseed lineage, and how heraldry reflects it.]<sup class="cite"><a href="#ref2">[2]</a></sup></p>
-
-        <h2>History <a class="section-edit" href="#">[edit]</a></h2>
-        <p class="placeholder">[Chronological account of major campaigns and turning points, including the fall to Chaos where relevant. Encyclopedic voice, not in-universe.]</p>
-
-        <h2>Organisation <a class="section-edit" href="#">[edit]</a></h2>
-        <p class="placeholder">[Company/cadre structure, deviations from Codex Astartes doctrine, specialist formations.]</p>
-
-        <h2>Beliefs &amp; Culture <a class="section-edit" href="#">[edit]</a></h2>
-        <p class="placeholder">[Chapter cult, oaths, internal law, relationship to the Imperial Creed or Ruinous Powers.]</p>
-
-        <h2>Notable Members <a class="section-edit" href="#">[edit]</a></h2>
-        <p class="placeholder">[Chapter Masters, Librarians, and other figures — link out to their Character Subject Pages.]</p>
+        <h2>Overview <a class="section-edit" href="#">[edit]</a></h2>
+        <p><strong>[Chapter/Warband Name]</strong> is a <span class="placeholder">[Founding number / successor lineage]</span> that <span class="placeholder">[defining trait — specialization, doctrine, or fate]</span>.<sup class="cite"><a href="#ref1">[1]</a></sup> <span class="placeholder">[Second sentence: current status.]</span></p>
 
         <blockquote>[Optional short attributed quotation.]</blockquote>
 
+        <h2>History <a class="section-edit" href="#">[edit]</a></h2>
+
+        <h3>[Founding Era / Historical Period] <a class="section-edit" href="#">[edit]</a></h3>
+        <p class="placeholder">[Founding chapter/legion, founding date or era, geneseed lineage, and the wider historical context the Chapter was raised into.]<sup class="cite"><a href="#ref2">[2]</a></sup></p>
+
+        <h3>[Major Campaign / Turning Point] <a class="section-edit" href="#">[edit]</a></h3>
+        <p class="placeholder">[Chronological account of a major campaign or crisis, including a fall to Chaos where relevant. Encyclopedic voice, not in-universe. Add further h3 subsections for additional eras as needed.]</p>
+
+        <h3>Notable Conflicts <a class="section-edit" href="#">[edit]</a></h3>
+        <p class="placeholder">[Framing note — e.g. whether this list covers the Chapter's full history, or excludes conflicts after a Fall in favor of a successor warband's own entry.]
+        <ul>
+          <li>[Date range] - [Conflict name]: <span class="placeholder">[brief note]</span></li>
+        </ul>
+        </p>
+
+        <h2>Culture <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Chapter cult, oaths, internal law, and relationship to the Imperial Creed or Ruinous Powers.]</p>
+
+        <h2>Combat Doctrine and Organization <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Overall doctrinal character, equipment emphasis, and deviations from the Codex Astartes.]</p>
+
+        <p class="placeholder">[Company-specific doctrine notes — nicknames, specializations, unique orders or traditions of induction.]</p>
+
+        <p class="placeholder">[Additional company-specific doctrine notes as needed. Add further paragraphs per company or grouping.]</p>
+
+        <h2>Chapter Disposition <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Framing sentence — e.g. the point in time this disposition reflects.]</p>
+
+        <div class="org-wrap">
+        <table class="org-table">
+          <tr class="org-title-row"><th colspan="6">Chapter Command</th></tr>
+          <tr class="org-lead-row">
+            <td colspan="6">
+              <div class="org-lead-badge">[Chapter Master Badge]</div>
+              <div class="org-lead-name">[Chapter Master Name]</div>
+              <div class="org-lead-title">Chapter Master of [Chapter/Warband Name]</div>
+            </td>
+          </tr>
+          <tr class="org-header-row">
+            <th>[Department]</th>
+            <th>[Department]</th>
+            <th>[Department]</th>
+            <th>[Department]</th>
+            <th>[Department]</th>
+            <th>[Department]</th>
+          </tr>
+          <tr>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[icon]</div></td>
+          </tr>
+          <tr>
+            <td class="placeholder">[Name — role]</td>
+            <td class="placeholder">[Name — role]</td>
+            <td class="placeholder">[Name — role]</td>
+            <td class="placeholder">[Name — role]</td>
+            <td class="placeholder">[Name — role]</td>
+            <td class="placeholder">[Name — role]</td>
+          </tr>
+        </table>
+        </div>
+
+        <div class="org-wrap">
+        <table class="org-table">
+          <tr class="org-header-row">
+            <th>1st Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>2nd Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>3rd Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>4th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>5th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>6th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>7th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>8th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>9th Company<span class="org-subtitle">[nickname / role]</span></th>
+            <th>10th Company<span class="org-subtitle">[nickname / role]</span></th>
+          </tr>
+          <tr>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+            <td class="org-icon-cell"><div class="org-icon">[badge]</div></td>
+          </tr>
+          <tr>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+            <td class="placeholder">[Company Master — name/role]</td>
+          </tr>
+        </table>
+        </div>
+
+        <h2>Recruitment <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Recruiting world(s), selection trials, and induction rites.]</p>
+
+        <h2>Heraldry <a class="section-edit" href="#">[edit]</a></h2>
+        <p class="placeholder">[Chapter badge / iconography description.]</p>
+
+        <p class="placeholder">[Armor colours, trim, and squad/company markings.]</p>
+
+        <p class="placeholder">[Company-specific heraldic variations, if any.]</p>
+
+        <h2>Notable Elements <a class="section-edit" href="#">[edit]</a></h2>
+
+        <h3>Relics <a class="section-edit" href="#">[edit]</a></h3>
+        <table class="data-table">
+          <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+          <tr><td class="placeholder">[Name]</td><td class="placeholder">[Type]</td><td class="placeholder">[Description]</td></tr>
+        </table>
+
+        <h3>Notable Vessels <a class="section-edit" href="#">[edit]</a></h3>
+        <table class="data-table">
+          <tr><th>Name</th><th>Class</th><th>Notes</th></tr>
+          <tr><td class="placeholder">[Name]</td><td class="placeholder">[Class]</td><td class="placeholder">[Notes]</td></tr>
+        </table>
+
+        <h3>Notable Members <a class="section-edit" href="#">[edit]</a></h3>
+        <ul>
+          <li class="placeholder">[Rank/Title] <a href="https://vulgatiam.com/characters/[Name]">[Name]</a></li>
+        </ul>
+
         <h2>See Also <a class="section-edit" href="#">[edit]</a></h2>
-        <p class="see-also placeholder">[Related Subject Pages: homeworld, key characters, Charter entry.]</p>
+        <p class="see-also placeholder">
+          <a href="https://vulgatiam.com/planets/[Planet_name]">[Planet name]</a> (homeworld) ·
+          <a href="https://vulgatiam.com/warband/[Warband_name]">[Warband name]</a> (successor warband, if applicable)
+        </p>
 
         <h2>References <a class="section-edit" href="#">[edit]</a></h2>
         <ol class="references">
@@ -350,22 +592,21 @@ a:visited { color: var(--link-visited); }
         <div class="infobox-image">[Chapter Badge / Heraldry]</div>
         <table>
           <tr><th>Founding Legion</th><td class="placeholder">[e.g. Dark Angels]</td></tr>
-          <tr><th>Founding</th><td class="placeholder">[Founding number / era]</td></tr>
+          <tr><th>Founding</th><td class="placeholder">[Founding number - date]</td></tr>
           <tr><th>Homeworld</th><td class="placeholder"><a href="https://vulgatiam.com/planets/[Planet_name]">[Planet name]</a></td></tr>
           <tr><th>Chapter Master</th><td class="placeholder"><a href="https://vulgatiam.com/characters/[Name]">[Name]</a></td></tr>
           <tr><th>Specialization</th><td class="placeholder">[Combat doctrine]</td></tr>
           <tr><th>Colours</th><td class="placeholder">[Heraldic colours]</td></tr>
           <tr><th>Status</th><td class="placeholder">[Active / Fallen / Renamed]</td></tr>
-          <tr><th>Source Project</th><td class="placeholder"><a href="https://vulgatiam.com/charter#[Project_name]">[Project name]</a></td></tr>
         </table>
       </aside>
 
     </div>
 
     <div class="categories-bar">
-      Categories: <a href="https://vulgatiam.com/chapters/">[Space Marine Chapters]</a> <a href="https://vulgatiam.com/warband/">[Fallen Chapters]</a> <a href="https://vulgatiam.com/charter#[Source_Project]">[Source Project]</a>
+      Categories: <a href="https://vulgatiam.com/chapters/">[Space Marine Chapters]</a>
     </div>
-    <div class="retrieved-from">Retrieved from "vulgatiam.com/[chapters or warband]/[Chapter_Warband_Name]" · Last verified: [DATE]</div>
+    <div class="retrieved-from">Retrieved from "vulgatiam.com/chapters/[Chapter_Warband_Name]" · Last verified: [DATE]</div>
 
   </div>
 </div>

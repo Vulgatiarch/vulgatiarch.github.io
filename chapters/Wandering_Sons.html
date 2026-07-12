@@ -346,7 +346,8 @@ a:visited { color: var(--link-visited); }
 }
 
 .infobox-image {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: auto;
+  min-height: 160px;
   background: repeating-linear-gradient(45deg, var(--paper-line), var(--paper-line) 2px, transparent 2px, transparent 10px);
   border-bottom: 1px solid var(--paper-line);
   display: flex;
@@ -357,10 +358,6 @@ a:visited { color: var(--link-visited); }
   color: var(--ink-faint);
   text-align: center;
   padding: 10px;
-}
-
-.infobox-image {
-  min-height: 160px;
 }
 
 .infobox-image img {
